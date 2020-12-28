@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="movie"
+            type="com.example.moviedb.model.Movie" />
+    </data>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            android:padding="8dp">
+
+            <ImageView
+                android:id="@+id/ivMovie"
+                android:layout_width="150dp"
+                android:layout_height="200dp"
+                android:scaleType="fitXY"
+                android:layout_centerHorizontal="true"
+                bind:posterPath="@{movie.posterPath}"/>
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ivMovie"
+                android:layout_marginTop="8dp"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:text="@{movie.title}"/>
+
+            <ImageView
+                android:id="@+id/ivStar"
+                android:src="@drawable/star"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_below="@+id/tvTitle" />
+
+            <TextView
+                android:id="@+id/tvVoteAverage"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_below="@+id/tvTitle"
+                android:layout_marginTop="8dp"
+                android:textSize="18sp"
+                android:layout_toEndOf="@+id/ivStar"
+                android:layout_marginStart="5dp"
+                android:text="@{Double.toString(movie.voteAverage)}"/>
+
+            <TextView
+                android:id="@+id/tvReleaseDate"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_below="@+id/tvTitle"
+                android:layout_marginTop="8dp"
+                android:textSize="18sp"
+                android:layout_marginStart="5dp"
+                android:layout_alignParentEnd="true"
+                android:text="@{movie.releaseDate}"
+                android:maxLength="4"/>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
